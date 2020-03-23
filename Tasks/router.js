@@ -5,7 +5,7 @@ router.get( "/" , getAll)
 
 router.get( "/:id" , getTaskByProject)
 
-router.get("/:id", getTaskById)
+router.get("/tasks/:id", getTaskById)
 
 router.put("/:id", updateTask)
 

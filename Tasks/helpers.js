@@ -15,15 +15,16 @@ db("tasks")
 
 //--------get taskByTaskId---------
 
-const getSpecTask =(id) =>db("task")
+const getSpecTask =(id) =>db("tasks")
 .where("Task_ID", "=", id)
+// .where({id})
 .first()
 
 
 
 //-------updateTask---------
 
-const putTask =(id, task)=> db("task")
+const putTask =(id, task)=> db("tasks")
 .where("Task_ID", "=", id)
 .update(task)
 

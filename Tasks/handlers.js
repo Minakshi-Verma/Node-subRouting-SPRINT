@@ -6,19 +6,25 @@ const getAll = (req, res) => {
     .then(tasks => res.status(200).send(tasks))
     .catch(err => res.status(500).send(err))
 }
-//------GetTAskByProject-------
+//------GetTAskBy Projectid------
 const getTaskByProject = (req,res)=>{
     const {id} = req.params
     helper.getTask(id)
-    .then(projects=>res.status(200).json({id}))
+    .then(tasks=>res.status(200).json({tasks}))
     .catch(err=>res.status(500).json({message:err}))
 }
-//--------getTaskById-----
-const getTaskById = (req,res)=>{
+//--------getTaskBy taskId-----
+
+const getTaskById = (req,res)=>{    
     const {id} = req.params
     helper.getSpecTask(id)
-    .then((task)=>{
-        res.status(200).json(task)     
+    .then(task=>{
+        res.status(200).json(task)   
+        // if(task){
+        //   res.status(200).json({task})     
+        // }else{
+        //   res.status(400).json({message:"we could not find the task with the id you provided"})
+        // }          
     })
     .catch(err=>res.status(500).json({message:err}))
 }
@@ -33,9 +39,9 @@ const updateTask = (req, res)=>{
     .then(()=>{
         helper.getSpecTask(id)
         .then(task=>res.status(200).json(task))
+        .catch(err => res.status(500).json({ message: err }));
     })
     .catch(err=>res.status(500).json({message:err}))
-
 }
 
 //---------------
